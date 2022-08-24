@@ -73,10 +73,10 @@ function Navbar() {
           }}
         >
           <MuiLink href="/" sx={linkStyle}>
-             صفحه نخست
+             صفحه نخست{' '}
           </MuiLink>
           <MuiLink href="about" sx={linkStyle}>
-            درباره ما
+            درباره ما{' '}
           </MuiLink>
         </Box>
         <Box sx={{ display: "flex"}}>
