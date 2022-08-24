@@ -53,7 +53,7 @@ const Home: NextPage = () => {
         >
           <Image
             layout="fill"
-            src="https://loremflickr.com/956/570/porto,coast"
+            src="https://loremflickr.com/956/570/coast,porto"
             alt=""
             priority
           />

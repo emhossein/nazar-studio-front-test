@@ -6,17 +6,16 @@ import { useRecoilValue } from "recoil";
 
 function ThemeContainer({ children }) {
   const theme = useRecoilValue(themeState);
+  const isDark = theme
+    ? darkTheme.palette.secondary.main
+    : lightTheme.palette.secondary.main;
 
   return (
     <Box
       sx={{
-        bgcolor:
-          theme 
-            ? darkTheme.palette.secondary.main
-            : lightTheme.palette.secondary.main,
-          
-          pt:'24px',
-          fontFamily:'Vazirmatn',
+        bgcolor: isDark,
+        pt: "24px",
+        fontFamily: "Vazirmatn",
       }}
     >
       {children}

@@ -25,13 +25,13 @@ const btnStyle = {
   height: "42px",
   borderRadius: "8px",
   boxShadow: 0,
-  ml:'20px',
-  fontSize:'15px',
-  fontFamily:'Vazirmatn',
-  borderWidth:'2px',
-  ':hover':{
-    borderWidth:'2px'
-  }
+  ml: "20px",
+  fontSize: "15px",
+  fontFamily: "Vazirmatn",
+  borderWidth: "2px",
+  ":hover": {
+    borderWidth: "2px",
+  },
 };
 
 function Navbar() {
@@ -73,13 +73,13 @@ function Navbar() {
           }}
         >
           <MuiLink href="/" sx={linkStyle}>
-             صفحه نخست{' '}
+            صفحه نخست{" "}
           </MuiLink>
           <MuiLink href="about" sx={linkStyle}>
-            درباره ما{' '}
+            درباره ما{" "}
           </MuiLink>
         </Box>
-        <Box sx={{ display: "flex"}}>
+        <Box sx={{ display: "flex" }}>
           <Box
             sx={{
               display: "flex",

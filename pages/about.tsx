@@ -1,4 +1,4 @@
-import { Container, Box, Typography, Button } from "@mui/material";
+import { Container, Box, Typography, Button, Skeleton } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { useRecoilValue } from "recoil";
@@ -7,16 +7,33 @@ import { darkTheme, lightTheme } from "../styles/theme";
 
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 
-function about() {
+function About() {
   const theme = useRecoilValue(themeState);
+
+  const [show, setShow] = React.useState(false)
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShow(true)
+    }, 2000)
+
+    return () => clearTimeout(timeout)
+
+  }, [show])
+
+  const isDark = theme
+    ? darkTheme.palette.primary.main
+    : lightTheme.palette.primary.main;
+
+  const isDarkText = theme
+    ? darkTheme.palette.primary.contrastText
+    : lightTheme.palette.primary.contrastText;
 
   return (
     <Container
       maxWidth="xl"
       sx={{
-        bgcolor: theme
-          ? darkTheme.palette.primary.main
-          : lightTheme.palette.primary.main,
+        bgcolor: isDark,
         mx: "144px !important",
         mt: "16px",
         p: "58px 98px 46px 98px",
@@ -28,16 +45,14 @@ function about() {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          "& p": {
+          "& p,": {
             fontFamily: "Vazirmatn",
-            color: theme
-              ? darkTheme.palette.primary.contrastText
-              : lightTheme.palette.primary.contrastText,
+            color: isDarkText,
           },
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "row",mb:'213px' }}>
-          <Box
+        <Box sx={{ display: "flex", flexDirection: "row", mb: "213px" }}>
+          {show?(<Box
             sx={{
               position: "relative",
               borderRadius: "98px",
@@ -53,7 +68,7 @@ function about() {
               alt=""
               priority
             />
-          </Box>
+          </Box>):(<Skeleton variant="rounded" width={461} height={517} />)}
           <Box
             sx={{
               width: "500px",
@@ -62,24 +77,26 @@ function about() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              mr:'26px'
+              mr: "26px",
             }}
           >
             <Typography
               variant="h1"
               sx={{
                 textAlign: "center",
-                fontSize:'40px',
-                fontFamily:'Vazirmatn',
-                mb:'28px'
+                fontSize: "40px",
+                fontFamily: "Vazirmatn",
+                mb: "28px",
               }}
             >
               درباره ما
             </Typography>
-            <Typography sx={{
-                fontSize:'24px',
-                lineHeight:'48px'
-              }}>
+            <Typography
+              sx={{
+                fontSize: "24px",
+                lineHeight: "48px",
+              }}
+            >
               نکته مهمی که در بیشتر سایتهای ایرانی توجهی به آن نمیشود طراحی صفحه
               درباره ما یا همان About Us است. اکثر افراد در این بخش مطالبی
               طولانی و خسته کننده برای کاربر و یا نوشته ای کوتاه و ناقص قرار
@@ -94,7 +111,7 @@ function about() {
             height: "42px",
             fontFamily: "Vazirmatn",
             boxShadow: 0,
-            borderWidth:'2px'
+            borderWidth: "2px",
           }}
           href="/"
         >
@@ -106,4 +123,4 @@ function about() {
   );
 }
 
-export default about;
+export default About;
