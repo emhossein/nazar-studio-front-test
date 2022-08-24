@@ -1,10 +1,14 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React,{ ReactNode } from "react";
 import { darkTheme, lightTheme } from "./../styles/theme";
 import { themeState } from "../atoms/themeState";
 import { useRecoilValue } from "recoil";
 
-function ThemeContainer({ children }) {
+interface Props {
+  children?: ReactNode
+}
+
+function ThemeContainer({ children }:Props) {
   const theme = useRecoilValue(themeState);
   const isDark = theme
     ? darkTheme.palette.secondary.main
